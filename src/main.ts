@@ -2,7 +2,7 @@ let clockElement: HTMLElement | null;
 
 function getClock() {
   if (clockElement) {
-    clockElement.innerText = new Date().toLocaleTimeString();
+    clockElement.innerText = new Date().toLocaleTimeString("da-DK");
   }
 }
 
