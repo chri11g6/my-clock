@@ -1,5 +1,9 @@
 # My Clock
 
+<p align="center">
+  <img src="src-tauri/icons/icon.svg" alt="icon" width="128" height="128">
+</p>
+
 My clock is a small and simple application to view clock by resolution in seconds.
 
 ## Technology get use
