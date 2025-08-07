@@ -5,7 +5,7 @@ metadata:
   description: Clock app code in tauri
   annotations:
     github.com/project-slug: chri11g6/my-clock
-    backstage.io/techdocs-ref: dir:README.md
+    backstage.io/techdocs-ref: url:https://github.com/chri11g6/my-clock/blob/master/README.md
 spec:
   type: application
   lifecycle: production
