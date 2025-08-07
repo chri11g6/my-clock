@@ -2,9 +2,11 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: my-clock
+  description: Clock app code in tauri
   annotations:
     github.com/project-slug: chri11g6/my-clock
+    backstage.io/techdocs-ref: dir:./README.md
 spec:
-  type: other
-  lifecycle: unknown
-  owner: chri11g6
+  type: application
+  lifecycle: production
+  owner: user:chri11g6
