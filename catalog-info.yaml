@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-clock
+  annotations:
+    github.com/project-slug: chri11g6/my-clock
+spec:
+  type: other
+  lifecycle: unknown
+  owner: chri11g6
