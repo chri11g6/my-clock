@@ -1,19 +1,16 @@
 {
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "my-clock",
+  "version": "0.1.0",
+  "identifier": "dk.chri11g6.my-clock",
   "build": {
     "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": true
+    "frontendDist": "../dist"
   },
-  "package": {
-    "productName": "my-clock",
-    "version": "0.0.0"
-  },
-  "tauri": {
-    "allowlist": {
-      "all": false
-    },
+  "app": {
+    "withGlobalTauri": true,
     "windows": [
       {
         "title": "my-clock",
@@ -23,17 +20,17 @@
     ],
     "security": {
       "csp": null
-    },
-    "bundle": {
-      "active": true,
-      "targets": "all",
-      "identifier": "dk.chri11g6.clock",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.ico"
-      ]
     }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
   }
 }
