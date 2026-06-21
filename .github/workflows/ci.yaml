@@ -34,7 +34,7 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: 🦀 Setup Rust
@@ -53,11 +53,27 @@ jobs:
       #     path: |
       #       src-tauri/target/release/bundle/**
 
-      - name: 📦 Upload Linux to Release
+      - name: 📦 Upload Linux deb to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: src-tauri/target/release/bundle/**/*.{AppImage,deb,rpm}
+          file: src-tauri/target/release/bundle/**/*.deb
+          tag: ${{ github.event.release.tag_name }}
+          overwrite: true
+
+      - name: 📦 Upload Linux AppImage to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/target/release/bundle/**/*.AppImage
+          tag: ${{ github.event.release.tag_name }}
+          overwrite: true
+
+      - name: 📦 Upload Linux rpm to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/target/release/bundle/**/*.rpm
           tag: ${{ github.event.release.tag_name }}
           overwrite: true
 
@@ -72,7 +88,7 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: 🦀 Setup Rust
@@ -91,10 +107,18 @@ jobs:
       #     path: |
       #       src-tauri/target/release/bundle/**
 
-      - name: 📦 Upload Windows to Release
+      - name: 📦 Upload Windows exe to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: src-tauri/target/release/bundle/**/*.{exe,msi}
+          file: src-tauri/target/release/bundle/**/*.exe
+          tag: ${{ github.event.release.tag_name }}
+          overwrite: true
+
+      - name: 📦 Upload Windows msi to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/target/release/bundle/**/*.msi
           tag: ${{ github.event.release.tag_name }}
           overwrite: true
