@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+permissions:
+  contents: write
+
 jobs:
   build-linux:
     name: 🐧 Build Linux
@@ -43,12 +46,20 @@ jobs:
       - name: 🔨 Build Tauri
         run: npm run tauri build
 
-      - name: 📤 Upload Linux artifacts
-        uses: actions/upload-artifact@v4
+      # - name: 📤 Upload Linux artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: tauri-linux
+      #     path: |
+      #       src-tauri/target/release/bundle/**
+
+      - name: 📦 Upload Linux to Release
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: tauri-linux
-          path: |
-            src-tauri/target/release/bundle/**
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/target/release/bundle/**/*.{AppImage,deb,rpm}
+          tag: ${{ github.event.release.tag_name }}
+          overwrite: true
 
   build-windows:
     name: 🪟 Build Windows
@@ -73,9 +84,17 @@ jobs:
       - name: 🔨 Build Tauri
         run: npm run tauri build
 
-      - name: 📤 Upload Windows artifacts
-        uses: actions/upload-artifact@v4
+      # - name: 📤 Upload Windows artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: tauri-windows
+      #     path: |
+      #       src-tauri/target/release/bundle/**
+
+      - name: 📦 Upload Windows to Release
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: tauri-windows
-          path: |
-            src-tauri/target/release/bundle/**
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/target/release/bundle/**/*.{exe,msi}
+          tag: ${{ github.event.release.tag_name }}
+          overwrite: true
